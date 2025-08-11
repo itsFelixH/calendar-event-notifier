@@ -1,0 +1,33 @@
+{
+  "name": "calendar-event-notifier",
+  "version": "1.1.0",
+  "description": "A Google Apps Script that monitors your Google Calendar and sends smart email notifications when new events are added",
+  "main": "Code.gs",
+  "scripts": {
+    "deploy": "echo 'Copy Code.gs and appsscript.json to Google Apps Script'",
+    "test": "echo 'Run testManualCheck() in Google Apps Script'"
+  },
+  "keywords": [
+    "google-apps-script",
+    "calendar",
+    "notifications",
+    "email",
+    "automation",
+    "productivity",
+    "google-calendar",
+    "event-monitoring"
+  ],
+  "author": "Calendar Event Notifier Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/calendar-event-notifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/calendar-event-notifier/issues"
+  },
+  "homepage": "https://github.com/yourusername/calendar-event-notifier#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+# Google Apps Script
+.clasp.json
+.clasprc.json
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Personal configuration
+config.local.js

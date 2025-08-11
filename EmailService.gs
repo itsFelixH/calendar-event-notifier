@@ -140,4 +140,3 @@ function buildEmailBody(event, calendarName, eventData, rule) {
     </div>
   `;
 }
-}

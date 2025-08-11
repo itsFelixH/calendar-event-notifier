@@ -4,7 +4,11 @@
   "description": "A Google Apps Script that monitors your Google Calendar and sends smart email notifications when new events are added",
   "main": "Code.gs",
   "scripts": {
-    "deploy": "echo 'Copy Code.gs and appsscript.json to Google Apps Script'",
+    "push": "clasp push",
+    "pull": "clasp pull",
+    "deploy": "clasp push && clasp deploy",
+    "open": "clasp open-script",
+    "logs": "clasp logs",
     "test": "echo 'Run testManualCheck() in Google Apps Script'"
   },
   "keywords": [
@@ -29,5 +33,8 @@
   "homepage": "https://github.com/yourusername/calendar-event-notifier#readme",
   "engines": {
     "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "@google/clasp": "^3.0.6-alpha"
   }
 }

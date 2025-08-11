@@ -4,6 +4,20 @@ A Google Apps Script that monitors your Google Calendar and sends smart email no
 
 ## 🚀 Setup
 
+### Option 1: Using clasp (Recommended for developers)
+
+1. Install clasp: `npm install -g @google/clasp`
+2. Enable Apps Script API: [console.cloud.google.com](https://console.cloud.google.com) → APIs & Services → Library → Google Apps Script API → Enable
+3. Login: `clasp login`
+4. Clone this project: `git clone <your-repo>`
+5. Install dependencies: `npm install`
+6. Create Apps Script project: `clasp create --title "Calendar Event Notifier" --type standalone`
+7. Push code: `clasp push`
+8. Update `CONFIG.calendarIds` in `Config.gs` with your calendar emails
+9. Run `setupCalendarTrigger()` once to start monitoring
+
+### Option 2: Manual setup
+
 1. Go to [script.google.com](https://script.google.com)
 2. Create a new project
 3. Copy all `.gs` files and `appsscript.json` to your project
@@ -194,10 +208,34 @@ cleanupOldProcessedEvents(30); // Remove 30+ day old records
 
 ## ⚡ Quick Start
 
+### With clasp:
+```bash
+npm run push          # Push code to Apps Script
+npm run open          # Open project in browser
+npm run logs          # View execution logs
+npm run deploy        # Deploy as web app (if needed)
+```
+
+### Manual setup:
 1. **Setup**: Run `setupCalendarTrigger()`
 2. **Test**: Create a calendar event
 3. **Debug**: Run `testManualCheck()` if no email arrives
 4. **Monitor**: Check execution logs in Apps Script
+
+## 🛠️ Development with clasp
+
+```bash
+# Development workflow
+clasp pull            # Pull latest from Apps Script
+# Make your changes locally
+clasp push            # Push changes to Apps Script
+clasp open-script     # Open in browser to test
+clasp logs            # View execution logs
+
+# Deployment
+clasp deploy          # Create new deployment
+clasp deployments     # List all deployments
+```
 
 ---
 

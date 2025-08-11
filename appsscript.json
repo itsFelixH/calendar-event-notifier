@@ -1,12 +1,7 @@
 {
-  "timeZone": "Europe/Berlin",
+  "timeZone": "America/New_York",
   "dependencies": {
-    "enabledAdvancedServices": []
   },
   "exceptionLogging": "STACKDRIVER",
-  "runtimeVersion": "V8",
-  "oauthScopes": [
-    "https://www.googleapis.com/auth/calendar",
-    "https://www.googleapis.com/auth/script.send_mail"
-  ]
+  "runtimeVersion": "V8"
 }

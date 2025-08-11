@@ -1,0 +1,100 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Create docs structure
+      run: |
+        mkdir -p docs
+        cp README.md docs/index.md
+        cp ROADMAP.md docs/roadmap.md
+        cp CHANGELOG.md docs/changelog.md
+        cp CONTRIBUTING.md docs/contributing.md
+        
+    - name: Generate documentation site
+      run: |
+        cat > docs/_config.yml << 'EOF'
+        title: Calendar Event Notifier
+        description: Smart Google Calendar event notifications
+        theme: jekyll-theme-cayman
+        plugins:
+          - jekyll-relative-links
+        relative_links:
+          enabled: true
+          collections: true
+        include:
+          - CONTRIBUTING.md
+          - CHANGELOG.md
+          - ROADMAP.md
+        EOF
+        
+        cat > docs/index.md << 'EOF'
+        ---
+        layout: default
+        title: Home
+        ---
+        
+        # Calendar Event Notifier v1.3.0
+        
+        Smart Google Calendar event notifications with direct calendar links, enhanced email footers, and professional HTML design.
+        
+        ## 🎆 Latest Features (v1.3.0)
+        
+        - ✅ **Direct Calendar Links** - Click event titles to edit in Google Calendar
+        - ✅ **Enhanced Email Footers** - Quick action buttons and system information
+        - ✅ **Calendar Color Integration** - Visual identification with actual calendar colors
+        - ✅ **Professional Email Design** - Statistics dashboard and daily schedules
+        
+        ## Quick Links
+        
+        - [📖 Documentation](index.md)
+        - [🗺️ Roadmap](roadmap.md)
+        - [📝 Changelog](changelog.md)
+        - [🤝 Contributing](contributing.md)
+        
+        ---
+        
+        EOF
+        cat README.md >> docs/index.md
+        
+    - name: Build with Jekyll
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: ./docs
+        destination: ./_site
+        
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

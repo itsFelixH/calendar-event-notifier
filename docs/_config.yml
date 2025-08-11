@@ -1,0 +1,32 @@
+title: Calendar Event Notifier
+description: Smart Google Calendar event notifications with filtering and HTML emails
+url: "https://yourusername.github.io"
+baseurl: "/calendar-event-notifier"
+
+theme: jekyll-theme-cayman
+
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+
+relative_links:
+  enabled: true
+  collections: true
+
+include:
+  - CONTRIBUTING.md
+  - CHANGELOG.md
+  - ROADMAP.md
+
+markdown: kramdown
+highlighter: rouge
+
+navigation:
+  - title: Home
+    url: /
+  - title: Roadmap
+    url: /roadmap
+  - title: Changelog
+    url: /changelog
+  - title: Contributing
+    url: /contributing

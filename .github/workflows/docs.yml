@@ -31,9 +31,10 @@ jobs:
       run: |
         mkdir -p docs
         cp README.md docs/index.md
-        cp ROADMAP.md docs/roadmap.md
-        cp CHANGELOG.md docs/changelog.md
-        cp CONTRIBUTING.md docs/contributing.md
+        # Copy optional docs only if they exist (repo may not have all of them)
+        [ -f ROADMAP.md ] && cp ROADMAP.md docs/roadmap.md || true
+        [ -f CHANGELOG.md ] && cp CHANGELOG.md docs/changelog.md || true
+        [ -f CONTRIBUTING.md ] && cp CONTRIBUTING.md docs/contributing.md || true
         
     - name: Generate documentation site
       run: |
@@ -47,9 +48,7 @@ jobs:
           enabled: true
           collections: true
         include:
-          - CONTRIBUTING.md
           - CHANGELOG.md
-          - ROADMAP.md
         EOF
         
         cat > docs/index.md << 'EOF'
@@ -72,9 +71,7 @@ jobs:
         ## Quick Links
         
         - [📖 Documentation](index.md)
-        - [🗺️ Roadmap](roadmap.md)
         - [📝 Changelog](changelog.md)
-        - [🤝 Contributing](contributing.md)
         
         ---
         

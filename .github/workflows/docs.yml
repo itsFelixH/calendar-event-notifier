@@ -88,6 +88,8 @@ jobs:
       uses: actions/upload-pages-artifact@v3
 
   deploy:
+    # Only publish from the default branch; PRs validate via the build job only.
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
